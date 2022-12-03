@@ -13,11 +13,11 @@ import org.json.simple.parser.*;
  */
 
 public class WikipediaApi {
-    public static String getWikipedia() {
+    public static String getWikipedia(String title) {
         try {
             //bored api url
             
-            URL url = new URL("http://www.boredapi.com/api/activity/");
+            URL url = new URL("https://en.wikipedia.org/api/rest_v1/?spec/page/summary/"+title);
             HttpURLConnection con = (HttpURLConnection) url.openConnection();
             con.setRequestMethod("GET");
             
@@ -33,19 +33,19 @@ public class WikipediaApi {
                 } in .close();
                 
             } else {
-                return "Bored api didn't work, Its their fault not mine!!";
+                return "Wikipedia api didn't work, Its their fault not mine!!";
             }
-            String activity = response.toString();
+            String wikiPage = response.toString();
             //{"activity":"Shred old documents you don't need anymore","type":"busywork","participants":1,"price":0,"link":"","key":"2430066","accessibility":0}
             
             //make response into a json object
             JSONParser parser = new JSONParser();
-            JSONObject json = (JSONObject) parser.parse(activity);
+            JSONObject json = (JSONObject) parser.parse(wikiPage);
             
             //get String out of json object
-            activity = (String) json.get("activity");
+            wikiPage = (String) json.get("description");
             
-            return activity;
+            return wikiPage;
         } catch (IOException e) {
             //con didn't work
             return "connection didn't work";
