@@ -32,8 +32,6 @@ class ChatBot extends JFrame{
         // wind.setSize(300,300);  
         JFrame    wind     = new JFrame("");
         JMenuBar  menu     = new JMenuBar();
-        // JMenuItem block    = new JMenuItem("Block...");
-        // JMenuItem clear    = new JMenuItem("Clear");
         JButton   submit   = new JButton("send");
         JTextArea outgoing = new JTextArea();
         JTextArea incoming = new JTextArea();
@@ -75,14 +73,14 @@ class ChatBot extends JFrame{
 
 
         
-        System.out.println("Hello I'm t3000 your digital help assistant");
+        
         try {
             System.out.println(BoredApi.getRandomActivity());
         } catch (IOException e) {
-            // TODO Auto-generated catch block
+            //Auto-generated catch block
             e.printStackTrace();
         } catch (ParseException e) {
-            // TODO Auto-generated catch block
+            // uto-generated catch block
             e.printStackTrace();
         }
 
