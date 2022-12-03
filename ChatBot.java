@@ -13,6 +13,7 @@ import org.json.simple.parser.ParseException;
 
 class ChatBot extends JFrame{
     public static HashMap<String,String> response;
+    private static String conversation; 
     
 
     public static void main(String[] args) {
@@ -29,41 +30,40 @@ class ChatBot extends JFrame{
         // area.setBounds(10,30, 200,200);  
         // wind.add(area);  
         // wind.setSize(300,300);  
-        // JFrame    wind     = new JFrame("");
-        // JMenuBar  menu     = new JMenuBar();
-        // // JMenuItem block    = new JMenuItem("Block...");
-        // // JMenuItem clear    = new JMenuItem("Clear");
-        // JButton   submit   = new JButton("send");
-        // JTextArea outgoing = new JTextArea();
-        // JTextArea incoming = new JTextArea();
+        JFrame    wind     = new JFrame("");
+        JMenuBar  menu     = new JMenuBar();
+        // JMenuItem block    = new JMenuItem("Block...");
+        // JMenuItem clear    = new JMenuItem("Clear");
+        JButton   submit   = new JButton("send");
+        JTextArea outgoing = new JTextArea();
+        JTextArea incoming = new JTextArea();
         
-        // JPanel panno = new JPanel(new BorderLayout());
-        // submit.addActionListener(new ActionListener() {
-        //    public void actionPerformed(ActionEvent e) {
-        //      String msg = outgoing.getText();
-        //      if (msg.length() > 0) {
-        //         //try {
-        //            //String sender = System.getProperty("user.name");
-        //            //TextMessage m = session.createTextMessage(msg);
-        //            //m.setStringProperty("sender", sender);
-        //            //publisher.publish(m);
-        //            outgoing.setText("");
-        //         //} catch (JMSException ex) { ex.printStackTrace(); }
-        //      }
-        //    }
-        // });
-        // panno.add(outgoing);
-        // panno.add(submit, BorderLayout.EAST);
-        // JSplitPane split = new JSplitPane(JSplitPane.VERTICAL_SPLIT,incoming, panno);
-        // split.setOneTouchExpandable(true);
-        // split.setDividerLocation(205);
+        JPanel panno = new JPanel(new BorderLayout());
+        conversation = "Hello I'm t3000 your digital help assistant \n";
+        incoming.setText(conversation);
+        submit.addActionListener(new ActionListener() {
+           public void actionPerformed(ActionEvent e) {
+             String msg = outgoing.getText();
+             if (msg.length() > 0) {
+                conversation = conversation + msg  +"\n";
+                incoming.setText(conversation );
+                outgoing.setText("");
+                
+             }
+           }
+        });
+        panno.add(outgoing);
+        panno.add(submit, BorderLayout.EAST);
+        JSplitPane split = new JSplitPane(JSplitPane.VERTICAL_SPLIT,incoming, panno);
+        split.setOneTouchExpandable(true);
+        split.setDividerLocation(205);
                                                                            
-        // wind.getContentPane().setLayout(new BorderLayout());
-        // wind.getContentPane().add(split);
-        // wind.getContentPane().add(menu, BorderLayout.NORTH);
-        // wind.setSize(new Dimension(400,300));
-        // wind.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        // wind.setVisible(true);
+        wind.getContentPane().setLayout(new BorderLayout());
+        wind.getContentPane().add(split);
+        wind.getContentPane().add(menu, BorderLayout.NORTH);
+        wind.setSize(new Dimension(400,300));
+        wind.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        wind.setVisible(true);
         
 
 
@@ -74,7 +74,7 @@ class ChatBot extends JFrame{
         createResponses();
 
 
-        boolean chatStatus = true;
+        
         System.out.println("Hello I'm t3000 your digital help assistant");
         try {
             System.out.println(BoredApi.getRandomActivity());
