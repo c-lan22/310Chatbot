@@ -6,11 +6,11 @@ import java.net.URL;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.*;
 
-
-public class BoredApi {
-    public static String getRandomActivity() {
+public class WikipediaApi {
+    public static String getWikipedia() {
         //bored api url
         try {
+            
             URL url = new URL("http://www.boredapi.com/api/activity/");
             HttpURLConnection con = (HttpURLConnection) url.openConnection();
             con.setRequestMethod("GET");
@@ -40,7 +40,6 @@ public class BoredApi {
             activity = (String) json.get("activity");
             
             return activity;
-
         } catch (IOException e) {
             //con didn't work
             return "connection didn't work";
@@ -51,6 +50,5 @@ public class BoredApi {
         
     }
 
-        //URL urlForGetRequest = new URL("http://www.boredapi.com/api/activity/?participants="+numOfPeople);
-      
+    
 }
