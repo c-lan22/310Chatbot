@@ -8,7 +8,7 @@ import org.json.simple.parser.*;
 
 public class Wikipedia {
     public static String getRandomActivity() throws IOException, ParseException {
-        //bored api url
+        //wikipedia api url
         URL url = new URL("http://www.boredapi.com/api/activity/");
         HttpURLConnection con = (HttpURLConnection) url.openConnection();
         con.setRequestMethod("GET");
