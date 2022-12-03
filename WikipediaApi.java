@@ -6,6 +6,12 @@ import java.net.URL;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.*;
 
+/* 
+ * Uses the wikipedia api to get info for converstations
+ * https://en.wikipedia.org/api/rest_v1/#/Page%20content/get_page_summary__title_
+ * 
+ */
+
 public class WikipediaApi {
     public static String getWikipedia() {
         try {

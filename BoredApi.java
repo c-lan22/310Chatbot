@@ -6,6 +6,11 @@ import java.net.URL;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.*;
 
+/* 
+ * uses bored api to suggest activities to do
+ * https://www.boredapi.com/documentation
+ * 
+ */
 
 public class BoredApi {
     public static String getRandomActivity() {
@@ -96,3 +101,9 @@ public class BoredApi {
 
               
 }
+
+/* 
+ * used https://www.geeksforgeeks.org/parse-json-java/
+ * to parse json files
+ * 
+ */
