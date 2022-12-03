@@ -4,6 +4,7 @@ import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.Color;
 import java.io.IOException;
 
 import javax.swing.*;
@@ -16,7 +17,7 @@ class ChatBot extends JFrame{
     private static String conversation; 
     
 
-    public static void main(String[] args) {
+    public static void main(String[] args) { 
         // box wind = new box();
         // //JFrame wind = new JFrame();
         // JTextField input = new JTextField();
@@ -30,21 +31,29 @@ class ChatBot extends JFrame{
         // area.setBounds(10,30, 200,200);  
         // wind.add(area);  
         // wind.setSize(300,300);  
-        JFrame    wind     = new JFrame("");
+        JFrame    wind     = new JFrame("t3000 ChatBot system");
         JMenuBar  menu     = new JMenuBar();
         JButton   submit   = new JButton("send");
         JTextArea outgoing = new JTextArea();
-        JTextArea incoming = new JTextArea();
-        
+        JTextArea chat = new JTextArea();
         JPanel panno = new JPanel(new BorderLayout());
+        
+        //chat.setBackground(Color.BLUE);
+        chat.setBackground(Color.BLACK);
+        outgoing.setBackground(Color.BLACK);
+        //panno.setBackground(Color.BLACK);
+        wind.setBackground(Color.BLACK);
+        submit.setBackground(Color.BLACK);
+        menu.setBackground(Color.BLACK);
+        
         conversation = "Hello I'm t3000 your digital help assistant \n";
-        incoming.setText(conversation);
+        chat.setText(conversation);
         submit.addActionListener(new ActionListener() {
            public void actionPerformed(ActionEvent e) {
              String msg = outgoing.getText();
              if (msg.length() > 0) {
                 conversation = conversation + msg  +"\n";
-                incoming.setText(conversation );
+                chat.setText(conversation );
                 outgoing.setText("");
                 
              }
@@ -52,7 +61,7 @@ class ChatBot extends JFrame{
         });
         panno.add(outgoing);
         panno.add(submit, BorderLayout.EAST);
-        JSplitPane split = new JSplitPane(JSplitPane.VERTICAL_SPLIT,incoming, panno);
+        JSplitPane split = new JSplitPane(JSplitPane.VERTICAL_SPLIT,chat, panno);
         split.setOneTouchExpandable(true);
         split.setDividerLocation(205);
                                                                            
