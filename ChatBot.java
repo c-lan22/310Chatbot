@@ -6,8 +6,6 @@ import java.awt.event.ActionListener;
 import javax.swing.*;
 
 
-
-
 class ChatBot extends JFrame{
     public static HashMap<String,String> response;
     private static String conversation; 
@@ -87,8 +85,24 @@ class ChatBot extends JFrame{
 
                 }else if (temp) {                            //calls wikipedia
                     
-                // } else if (false) {                               //calls boredapi
-                    
+                } else if (msg.contains("suggest activity")||msg.contains("Suggest activity")) {     //calls boredapi
+                    if(msg.contains(" for")){
+                        String[] msgArray = msg.split(" ");
+                        int numOfPeople = 0;
+                        for (int  i = 2; i < msgArray.length;i++ ) {
+                            try {
+                                numOfPeople= Integer.parseInt( msgArray[i]);
+                                break;
+                            } catch (NumberFormatException f) {}
+                        }
+                        if (numOfPeople == 1) {
+                            chatBotResponse = "I think you guys should " + BoredApi.getRandomActivity(numOfPeople).toLowerCase() + "!" ;
+                        }else{
+                            chatBotResponse = "I think you guys should " + BoredApi.getRandomActivity(numOfPeople).toLowerCase() + "!" ;
+                        }
+                    }else{
+                        chatBotResponse = "I think you should " + BoredApi.getRandomActivity().toLowerCase() + "!";
+                    }
                 } else if(response.containsKey(msg) ){                     //calls hashmap    
                     chatBotResponse = response.get(msg);
                 }else{                                                       //calls confused response

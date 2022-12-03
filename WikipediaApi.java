@@ -8,8 +8,8 @@ import org.json.simple.parser.*;
 
 public class WikipediaApi {
     public static String getWikipedia() {
-        //bored api url
         try {
+            //bored api url
             
             URL url = new URL("http://www.boredapi.com/api/activity/");
             HttpURLConnection con = (HttpURLConnection) url.openConnection();
