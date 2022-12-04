@@ -166,7 +166,13 @@ class ChatBot extends JFrame{
         response = new HashMap<>();
         response.put("hi", "how can I help you and this country?");
         response.put("hello", "how can I help you and this country?");
-        response.put("help", "");
+        response.put("help", 
+        "Here are some simple commands to try:\n"
+        +" - what is a\n"
+        +" - tell me more\n"
+        +" - suggest activity\n"
+        +" - suggest activity for\n"
+        );
         response.put("hey", "how can I help you and this country?");
     
     }
