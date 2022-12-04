@@ -6,9 +6,11 @@ import java.awt.event.ActionListener;
 import javax.swing.*;
 
 
+
 class ChatBot extends JFrame{
-    public static HashMap<String,String> response;
+    private static HashMap<String,String> response;
     private static String conversation; 
+    
     
 
     public static void main(String[] args) { 
@@ -77,14 +79,29 @@ class ChatBot extends JFrame{
                  * create the bot response
                  */
                 String chatBotResponse = "";
-                boolean temp = false;
+                
                 if(msg.contains("Watergate")||msg.contains("watergate") ){     //calls watergate response
                                                                         
                     int rand = (int)(Math.random() * endInterview.length);
                     chatBotResponse = endInterview[rand];
 
-                }else if (temp) {                            //calls wikipedia
+                }else if (msg.contains("what is a")||msg.contains("What is a")) {                            //calls wikipedia
+                    String wikiTitle = "";
+                    String[] wiki = msg.split(" ");
+                    for (int i = 3; i < wiki.length;i++ ) {
+                        if(i > 3){
+                            wikiTitle = wikiTitle+"_";
+                        }
+                        wikiTitle = wikiTitle + wiki[i];
+                    }
+                    if(wikiTitle.equals("")){
+                        chatBotResponse = "I am confused";
+                    }else{
+                        chatBotResponse = WikipediaApi.getWikipediaDescription(wikiTitle);
+                    }
                     
+                }else if(msg.contains("tell me more")||msg.contains("Tell me more")){             //call wiki tell more
+                    chatBotResponse = WikipediaApi.getWikipediaExtract();
                 } else if (msg.contains("suggest activity")||msg.contains("Suggest activity")) {     //calls boredapi
                     if(msg.contains(" for")){
                         String[] msgArray = msg.split(" ");

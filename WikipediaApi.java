@@ -13,11 +13,13 @@ import org.json.simple.parser.*;
  */
 
 public class WikipediaApi {
-    public static String getWikipedia(String title) {
+    private static String wikiextract;
+ 
+    public static String getWikipediaDescription(String title) {
         try {
             //bored api url
             
-            URL url = new URL("https://en.wikipedia.org/api/rest_v1/?spec/page/summary/"+title);
+            URL url = new URL("https://en.wikipedia.org/api/rest_v1/page/summary/"+title);
             HttpURLConnection con = (HttpURLConnection) url.openConnection();
             con.setRequestMethod("GET");
             
@@ -33,17 +35,24 @@ public class WikipediaApi {
                 } in .close();
                 
             } else {
-                return "Wikipedia api didn't work, Its their fault not mine!!";
+                return "Wikipedia api didn't work, Its their fault not mine!! Your query was: \""+title+"\"";
             }
             String wikiPage = response.toString();
             //{"activity":"Shred old documents you don't need anymore","type":"busywork","participants":1,"price":0,"link":"","key":"2430066","accessibility":0}
             
             //make response into a json object
             JSONParser parser = new JSONParser();
-            JSONObject json = (JSONObject) parser.parse(wikiPage);
+            JSONObject context = (JSONObject) parser.parse(wikiPage);
             
             //get String out of json object
-            wikiPage = (String) json.get("description");
+            wikiPage = (String) context.get("description");
+            wikiextract = (String) context.get("extract");
+            try {
+                wikiPage.equals(null);
+            } catch (NullPointerException e) {
+                // TODO: handle exception
+                return Integer.toString(myResponseCode);
+            }
             
             return wikiPage;
         } catch (IOException e) {
@@ -54,6 +63,18 @@ public class WikipediaApi {
             return "Json messed up";
         }
         
+    }
+
+    public static String getWikipediaExtract() {
+        String[] words = wikiextract.split(" ");
+        String betterFormat = "";
+        for (int i = 0; i < words.length;i++) {
+            if(i % 10 == 0 && i > 0){
+                betterFormat = betterFormat + "\n";
+            }
+            betterFormat = betterFormat + words[i] + " ";
+        }
+        return betterFormat;
     }
 
     
