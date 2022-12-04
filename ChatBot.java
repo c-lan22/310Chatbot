@@ -69,13 +69,13 @@ class ChatBot extends JFrame{
          * Implementation of the chat
          */
         
-        conversation = "<Richard Nixon>\nHello I'm Richard Nixon your digital help assistant \n";
+        conversation ="<Richard Nixon>\nHello I'm Richard Nixon your digital help assistant \n";
         chat.setText(conversation);
         submit.addActionListener(new ActionListener() {
            public void actionPerformed(ActionEvent e) {
              String msg = userText.getText();
              if (msg.length() > 0) {
-                conversation = conversation +"<"+username+">\n"+ msg  +"\n";
+                
                 
                 /* 
                  * create the bot response
@@ -133,7 +133,7 @@ class ChatBot extends JFrame{
                     chatBotResponse = confusedBot[rand];
                 }
                 
-
+                conversation = conversation +"<"+username+">\n"+ msg  +"\n";
                 conversation = conversation + "<Richard Nixon>\n"+ chatBotResponse +"\n";
                 chat.setText(conversation );
                 userText.setText("");
@@ -167,17 +167,15 @@ class ChatBot extends JFrame{
         response.put("hi", "how can I help you and this country?");
         response.put("hello", "how can I help you and this country?");
         response.put("help", 
-        "Here are some simple commands to try:\n"
+        "Here are some simple conversations to try:\n"
         +" - what is a\n"
+        +" - my name is\n"
         +" - tell me more\n"
         +" - suggest activity\n"
-        +" - suggest activity for\n"
+        +" - suggest activity for <# of people>\n"
         );
         response.put("hey", "how can I help you and this country?");
     
     }
-    public String getResponse(String userInput) {
-        return "error";
-    }
-    
+  
 }
