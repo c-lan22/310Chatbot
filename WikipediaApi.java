@@ -50,7 +50,6 @@ public class WikipediaApi {
             try {
                 wikiPage.equals(null);
             } catch (NullPointerException e) {
-                // TODO: handle exception
                 return Integer.toString(myResponseCode);
             }
             

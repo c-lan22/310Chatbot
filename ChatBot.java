@@ -10,6 +10,7 @@ import javax.swing.*;
 class ChatBot extends JFrame{
     private static HashMap<String,String> response;
     private static String conversation; 
+    private static String username;
     
     
 
@@ -48,7 +49,8 @@ class ChatBot extends JFrame{
         wind.setBackground(Color.BLACK);
         submit.setBackground(Color.RED);
         menu.setBackground(Color.BLACK);
-        
+        //set username to user
+        username = "User";
         //create hash map of responses
         createResponses();
         //create array of confused responses
@@ -73,7 +75,7 @@ class ChatBot extends JFrame{
            public void actionPerformed(ActionEvent e) {
              String msg = userText.getText();
              if (msg.length() > 0) {
-                conversation = conversation +"<User>\n"+ msg  +"\n";
+                conversation = conversation +"<"+username+">\n"+ msg  +"\n";
                 
                 /* 
                  * create the bot response
@@ -85,6 +87,10 @@ class ChatBot extends JFrame{
                     int rand = (int)(Math.random() * endInterview.length);
                     chatBotResponse = endInterview[rand];
 
+                }else if(msg.contains("my name is")||msg.contains("My name is")){
+                    String[] msgName = msg.split(" ");
+                    username = msgName[3]; 
+                    chatBotResponse = "hello "+username+"! /nwhat can I do for you?" ;
                 }else if (msg.contains("what is a")||msg.contains("What is a")) {                            //calls wikipedia
                     String wikiTitle = "";
                     String[] wiki = msg.split(" ");
