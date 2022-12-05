@@ -1,5 +1,5 @@
 ## Richard Nixon Chatbot
-This project allows t=you to interact with the 37th president of the United States Richard Nixon!
+This project allows the user to interact with the 37th president of the United States Richard Nixon!
 Here are some simple conversations to try:
 -  what is a
 - my name is
