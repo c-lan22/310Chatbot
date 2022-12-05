@@ -1,11 +1,11 @@
 ## Richard Nixon Chatbot
 This project allows t=you to interact with the 37th president of the United States Richard Nixon!
- "Here are some simple conversations to try:
-        -  what is a
-        - my name is
-        - tell me more
-        - suggest activity
-        - suggest activity for <# of people>
+Here are some simple conversations to try:
+-  what is a
+- my name is
+- tell me more
+- suggest activity
+- suggest activity for <# of people>
 
 ## Tools used
 - Java
