@@ -90,7 +90,7 @@ class ChatBot extends JFrame{
                 }else if(msg.contains("my name is")||msg.contains("My name is")){
                     String[] msgName = msg.split(" ");
                     username = msgName[3]; 
-                    chatBotResponse = "hello "+username+"! /nwhat can I do for you?" ;
+                    chatBotResponse = "hello "+username+"! \nwhat can I do for you?" ;
                 }else if (msg.contains("what is a")||msg.contains("What is a")) {                            //calls wikipedia
                     String wikiTitle = "";
                     String[] wiki = msg.split(" ");
