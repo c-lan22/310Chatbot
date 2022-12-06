@@ -18,3 +18,6 @@ Nixon interacts with 2 main apis:
 https://en.wikipedia.org/api/rest_v1/#/Page%20content/get_page_summary__title_
 2. uses bored api to suggest random activities. You can also have Nixon suggest a random activity that requires a selected amount of people
 https://www.boredapi.com/documentation
+
+## How to run project
+Import project into vscode and make sure the jar file is in your classpath. Then hit run and enjoy talking to the president.
