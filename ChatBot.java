@@ -181,6 +181,6 @@ class ChatBot extends JFrame{
 }
 
 /* 
- * what is going on
+ * 
  * 
  */
